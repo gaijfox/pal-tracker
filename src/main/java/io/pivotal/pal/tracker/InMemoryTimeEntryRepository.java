@@ -19,25 +19,25 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
         return te;
     }
 
-    public TimeEntry update(long l, TimeEntry expected) {
-        if (find(l) == null) {
+    public TimeEntry update(Long id, TimeEntry expected) {
+        if (find(id) == null) {
             return null;
         } else {
-            expected.setId(l);
-            timeEntries.put(l, expected);
+            expected.setId(id);
+            timeEntries.put(id, expected);
         }
         return expected;
     }
 
-    public TimeEntry delete(long l) {
-        return timeEntries.remove(l);
+    public TimeEntry delete(Long id) {
+        return timeEntries.remove(id);
     }
 
     public List<TimeEntry> list() {
         return new ArrayList(timeEntries.values());
     }
 
-    public TimeEntry find(long l) {
-        return timeEntries.get(l);
+    public TimeEntry find(Long id) {
+        return timeEntries.get(id);
     }
 }
